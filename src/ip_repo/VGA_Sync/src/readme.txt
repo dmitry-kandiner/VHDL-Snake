@@ -1,0 +1,1 @@
+Use this site as a reference: http://www.tinyvga.com/vga-timing
