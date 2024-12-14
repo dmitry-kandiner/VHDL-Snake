@@ -1,0 +1,331 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x4156E6D9433D8C58",
+      "device": "xc7a100tcsg324-1",
+      "gen_directory": "../../../vivado_project/VHDL-Snake.gen/sources_1/bd/snake",
+      "name": "snake",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "VGA_Sync_0": "",
+      "clk_wiz_0": "",
+      "reset_inv_0": "",
+      "microblaze_mcs_0": ""
+    },
+    "ports": {
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "snake_sys_clock",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      },
+      "vsync": {
+        "direction": "O"
+      },
+      "hsync": {
+        "direction": "O"
+      },
+      "active": {
+        "direction": "O"
+      },
+      "vga_row": {
+        "direction": "O",
+        "left": "11",
+        "right": "0"
+      },
+      "vga_column": {
+        "direction": "O",
+        "left": "11",
+        "right": "0"
+      },
+      "tim_100hz": {
+        "direction": "O"
+      },
+      "mcu_in": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "mcu_out": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      }
+    },
+    "components": {
+      "VGA_Sync_0": {
+        "vlnv": "user.ip:user:VGA_Sync:1.0",
+        "ip_revision": "4",
+        "xci_name": "snake_VGA_Sync_0_0",
+        "xci_path": "..\\..\\..\\vivado_project\\VHDL-Snake.gen\\sources_1\\bd\\snake\\ip\\snake_VGA_Sync_0_0\\snake_VGA_Sync_0_0.xci",
+        "inst_hier_path": "VGA_Sync_0"
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "14",
+        "xci_name": "snake_clk_wiz_0_0",
+        "xci_path": "..\\..\\..\\vivado_project\\VHDL-Snake.gen\\sources_1\\bd\\snake\\ip\\snake_clk_wiz_0_0\\snake_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLKOUT1_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "139.612"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "112.291"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT2_JITTER": {
+            "value": "177.272"
+          },
+          "CLKOUT2_PHASE_ERROR": {
+            "value": "112.291"
+          },
+          "CLKOUT2_REQUESTED_OUT_FREQ": {
+            "value": "31.5"
+          },
+          "CLKOUT2_USED": {
+            "value": "true"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFGCE"
+          },
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "CLK_OUT1_PORT": {
+            "value": "clk_mcu"
+          },
+          "CLK_OUT2_PORT": {
+            "value": "clk_vga"
+          },
+          "FEEDBACK_SOURCE": {
+            "value": "FDBK_AUTO"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "7.875"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "7.875"
+          },
+          "MMCM_CLKOUT1_DIVIDE": {
+            "value": "25"
+          },
+          "NUM_OUT_CLKS": {
+            "value": "2"
+          },
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          },
+          "USE_LOCKED": {
+            "value": "false"
+          },
+          "USE_SAFE_CLOCK_STARTUP": {
+            "value": "true"
+          }
+        }
+      },
+      "reset_inv_0": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "ip_revision": "4",
+        "xci_name": "snake_reset_inv_0_0",
+        "xci_path": "..\\..\\..\\vivado_project\\VHDL-Snake.gen\\sources_1\\bd\\snake\\ip\\snake_reset_inv_0_0\\snake_reset_inv_0_0.xci",
+        "inst_hier_path": "reset_inv_0",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "microblaze_mcs_0": {
+        "vlnv": "xilinx.com:ip:microblaze_mcs:3.0",
+        "ip_revision": "23",
+        "xci_name": "snake_microblaze_mcs_0_0",
+        "xci_path": "..\\..\\..\\vivado_project\\VHDL-Snake.gen\\sources_1\\bd\\snake\\ip\\snake_microblaze_mcs_0_0\\snake_microblaze_mcs_0_0.xci",
+        "inst_hier_path": "microblaze_mcs_0",
+        "parameters": {
+          "FIT1_No_CLOCKS": {
+            "value": "1000000"
+          },
+          "USE_FIT1": {
+            "value": "1"
+          },
+          "USE_GPI1": {
+            "value": "1"
+          },
+          "USE_GPO1": {
+            "value": "1"
+          },
+          "USE_IO_BUS": {
+            "value": "0"
+          }
+        },
+        "interface_ports": {
+          "GPIO1": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+            "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+            "parameters": {
+              "C_GPI1_INTERRUPT": {
+                "value": "0"
+              },
+              "C_GPI1_SIZE": {
+                "value": "32"
+              },
+              "C_GPO1_INIT": {
+                "value": "0x00000000"
+              },
+              "C_GPO1_SIZE": {
+                "value": "32"
+              },
+              "C_USE_GPI1": {
+                "value": "1"
+              },
+              "C_USE_GPO1": {
+                "value": "1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "nets": {
+      "GPIO1_tri_i_0_1": {
+        "ports": [
+          "mcu_in",
+          "microblaze_mcs_0/GPIO1_tri_i"
+        ]
+      },
+      "VGA_Sync_0_active": {
+        "ports": [
+          "VGA_Sync_0/active",
+          "active"
+        ]
+      },
+      "VGA_Sync_0_column": {
+        "ports": [
+          "VGA_Sync_0/column",
+          "vga_column"
+        ]
+      },
+      "VGA_Sync_0_hsync": {
+        "ports": [
+          "VGA_Sync_0/hsync",
+          "hsync"
+        ]
+      },
+      "VGA_Sync_0_row": {
+        "ports": [
+          "VGA_Sync_0/row",
+          "vga_row"
+        ]
+      },
+      "VGA_Sync_0_vsync": {
+        "ports": [
+          "VGA_Sync_0/vsync",
+          "vsync"
+        ]
+      },
+      "clk_wiz_0_clk_mcu": {
+        "ports": [
+          "clk_wiz_0/clk_mcu",
+          "microblaze_mcs_0/Clk"
+        ]
+      },
+      "clk_wiz_0_clk_vga": {
+        "ports": [
+          "clk_wiz_0/clk_vga",
+          "VGA_Sync_0/clock"
+        ]
+      },
+      "microblaze_mcs_0_FIT1_Toggle": {
+        "ports": [
+          "microblaze_mcs_0/FIT1_Toggle",
+          "tim_100hz"
+        ]
+      },
+      "microblaze_mcs_0_GPIO1_tri_o": {
+        "ports": [
+          "microblaze_mcs_0/GPIO1_tri_o",
+          "mcu_out"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "reset_inv_0/Op1",
+          "microblaze_mcs_0/Reset"
+        ]
+      },
+      "reset_inv_0_Res": {
+        "ports": [
+          "reset_inv_0/Res",
+          "clk_wiz_0/reset"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz_0/clk_in1"
+        ]
+      }
+    }
+  }
+}

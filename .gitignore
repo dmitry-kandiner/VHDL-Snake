@@ -1,1 +1,5 @@
 vivado_project/*
+src/bd/*/ip/*
+src/bd/*/ui/*
+src/bd/*/*.bda
+src/bd/*/*.bxml
