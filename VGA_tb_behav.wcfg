@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="VGA_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="VGA_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2,007.596 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,646.097 ns"></ZoomEndTime>
+      <Cursor1Time time="2,539.680 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="149"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/VGA_tb/vga_clock" type="logic">
+      <obj_property name="ElementShortName">vga_clock</obj_property>
+      <obj_property name="ObjectShortName">vga_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/active" type="logic">
+      <obj_property name="ElementShortName">active</obj_property>
+      <obj_property name="ObjectShortName">active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/sync/U0/h_display" type="logic">
+      <obj_property name="ElementShortName">h_display</obj_property>
+      <obj_property name="ObjectShortName">h_display</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/disp_column" type="array">
+      <obj_property name="ElementShortName">disp_column[11:0]</obj_property>
+      <obj_property name="ObjectShortName">disp_column[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/char_column" type="array">
+      <obj_property name="ElementShortName">char_column[3:0]</obj_property>
+      <obj_property name="ObjectShortName">char_column[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/scr_buff_column" type="other">
+      <obj_property name="ElementShortName">scr_buff_column</obj_property>
+      <obj_property name="ObjectShortName">scr_buff_column</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/sync/U0/v_display" type="logic">
+      <obj_property name="ElementShortName">v_display</obj_property>
+      <obj_property name="ObjectShortName">v_display</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/disp_row" type="array">
+      <obj_property name="ElementShortName">disp_row[11:0]</obj_property>
+      <obj_property name="ObjectShortName">disp_row[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/char_row" type="array">
+      <obj_property name="ElementShortName">char_row[3:0]</obj_property>
+      <obj_property name="ObjectShortName">char_row[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/VGA_tb/uut/scr_buff_row" type="other">
+      <obj_property name="ElementShortName">scr_buff_row</obj_property>
+      <obj_property name="ObjectShortName">scr_buff_row</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

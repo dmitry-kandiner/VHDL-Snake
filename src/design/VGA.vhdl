@@ -96,7 +96,7 @@ architecture Behavioral of VGA is
     constant char_width  : integer := 16;
     constant char_height : integer := 16;
     
-    signal active      : STD_LOGIC;
+    signal disp_active : STD_LOGIC;
     signal disp_row    : STD_LOGIC_VECTOR(11 downto 0);
     signal disp_column : STD_LOGIC_VECTOR(11 downto 0);
 
@@ -122,7 +122,7 @@ begin
         clock  => vga_clk,
         hsync  => hsync,
         vsync  => vsync,
-        active => active,
+        active => disp_active,
         row    => disp_row,
         column => disp_column
     );
@@ -146,23 +146,26 @@ begin
     process(vga_clk)
     begin
         if rising_edge(vga_clk) then
-            if active = '1' then    -- Update VGA colors output
-                vga_r <= char_r;
-                vga_g <= char_g;
-                vga_b <= char_b;
-            else
-                vga_r <= (others => '0');
-                vga_g <= (others => '0');
-                vga_b <= (others => '0');
-            end if;
-
             char_column <= disp_column(3 downto 0);
             char_row    <= disp_row   (3 downto 0);
 
             scr_buff_column <= to_integer(unsigned(disp_column)) / char_width;
             scr_buff_row    <= to_integer(unsigned(disp_row))    / char_height;
             scr_buff_addr   <= std_logic_vector(to_unsigned(scr_buff_width * scr_buff_row + scr_buff_column, scr_buff_addr'length));
+        
+--            if (disp_active = '1') then
+--                vga_r <= char_r;
+--                vga_g <= char_g;
+--                vga_b <= char_b;
+--            else
+--                vga_r <= (others => '0');
+--                vga_g <= (others => '0');
+--                vga_b <= (others => '0');
+--            end if;
         end if;
     end process;
 
+    vga_r <= char_r when disp_active = '1' else (others => '0');
+    vga_g <= char_g when disp_active = '1' else (others => '0');
+    vga_b <= char_b when disp_active = '1' else (others => '0');
 end Behavioral;
