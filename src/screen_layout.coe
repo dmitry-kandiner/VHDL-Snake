@@ -34,7 +34,7 @@ memory_initialization_vector=
 ; 00    - Empty
 ; 01 	- Wall
 ; 02 	- Apple
-; 03    - *** Reserved ***
+; 03    - Screen timing calibration
 ; 04    - Head left
 ; 05 	- Head up
 ; 06    - Head right

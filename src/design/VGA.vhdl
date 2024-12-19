@@ -106,6 +106,16 @@ architecture Behavioral of VGA is
     
     constant scr_buff_width  : integer := 40;
     constant scr_buff_height : integer := 30;
+    
+    signal hsync0 : STD_LOGIC;
+    signal hsync1 : STD_LOGIC;
+    
+    signal disp_active0 : STD_LOGIC;
+    signal disp_active1 : STD_LOGIC;
+
+    signal char_column0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal char_column1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal char_row0    : STD_LOGIC_VECTOR (3 downto 0);
 begin
     chargen : VGA_Chargen
     PORT MAP (
@@ -120,9 +130,9 @@ begin
     sync : VGA_Sync_0
     PORT MAP (
         clock  => vga_clk,
-        hsync  => hsync,
+        hsync  => hsync1,
         vsync  => vsync,
-        active => disp_active,
+        active => disp_active1,
         row    => disp_row,
         column => disp_column
     );
@@ -146,24 +156,29 @@ begin
     process(vga_clk)
     begin
         if rising_edge(vga_clk) then
-            char_column <= disp_column(3 downto 0);
-            char_row    <= disp_row   (3 downto 0);
+            char_column1 <= disp_column(3 downto 0);
+            char_row0    <= disp_row   (3 downto 0);
 
-            scr_buff_column <= to_integer(unsigned(disp_column)) / char_width;
-            scr_buff_row    <= to_integer(unsigned(disp_row))    / char_height;
+            scr_buff_column <= to_integer(unsigned(disp_column(11 downto 4)));
+            scr_buff_row    <= to_integer(unsigned(disp_row   (11 downto 4)));
             scr_buff_addr   <= std_logic_vector(to_unsigned(scr_buff_width * scr_buff_row + scr_buff_column, scr_buff_addr'length));
-        
---            if (disp_active = '1') then
---                vga_r <= char_r;
---                vga_g <= char_g;
---                vga_b <= char_b;
---            else
---                vga_r <= (others => '0');
---                vga_g <= (others => '0');
---                vga_b <= (others => '0');
---            end if;
         end if;
     end process;
+    
+    process (vga_clk)
+    begin
+        if rising_edge(vga_clk) then
+            disp_active0 <= disp_active1;
+            disp_active  <= disp_active0;
+
+            hsync0 <= hsync1;
+            hsync  <= hsync0;
+            
+            char_column0 <= char_column1;
+            char_column  <= char_column0;
+            char_row    <= char_row0;
+        end if;
+    end process;    
 
     vga_r <= char_r when disp_active = '1' else (others => '0');
     vga_g <= char_g when disp_active = '1' else (others => '0');

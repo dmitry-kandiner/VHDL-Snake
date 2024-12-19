@@ -62,7 +62,7 @@ architecture Behavioral of VGA_tb is
     signal vga_g : STD_LOGIC_VECTOR (3 downto 0);
     signal vga_b : STD_LOGIC_VECTOR (3 downto 0);
 
-    constant vga_clk_period : time := 31.746 ns;
+    constant vga_clk_period : time := 50 ns;
 
 begin
     uut : VGA
