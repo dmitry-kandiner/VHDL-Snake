@@ -4,7 +4,7 @@
     "xci_name": "VGA_Sync_0",
     "component_reference": "user.ip:user:VGA_Sync:1.0",
     "ip_revision": "4",
-    "gen_directory": "../../../../VHDL-Snake.gen/sources_1/ip/VGA_Sync_0",
+    "gen_directory": "../../../vivado_project/VHDL-Snake.gen/sources_1/ip/VGA_Sync_0",
     "parameters": {
       "component_parameters": {
         "h_sync_pulse": [ { "value": "40", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -49,7 +49,7 @@
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
         "IPREVISION": [ { "value": "4" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../VHDL-Snake.gen/sources_1/ip/VGA_Sync_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../vivado_project/VHDL-Snake.gen/sources_1/ip/VGA_Sync_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
         "SWVERSION": [ { "value": "2024.1" } ],

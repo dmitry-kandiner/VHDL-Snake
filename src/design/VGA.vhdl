@@ -70,7 +70,7 @@ architecture Behavioral of VGA is
             column : out STD_LOGIC_VECTOR(11 downto 0));
     end component;
 
-    COMPONENT blk_mem_gen_0
+    COMPONENT video_mem_0 is
         PORT (
             clka  : IN STD_LOGIC;
             wea   : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -144,7 +144,7 @@ begin
         column => disp_column
     );
     
-    scr_buff : blk_mem_gen_0
+    scr_buff : video_mem_0
     PORT MAP (
         clka  => vga_clk,
         wea   => (others => '0'),
