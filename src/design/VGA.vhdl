@@ -109,12 +109,19 @@ architecture Behavioral of VGA is
     
     signal hsync0 : STD_LOGIC;
     signal hsync1 : STD_LOGIC;
+    signal hsync2 : STD_LOGIC;
+    
+    signal vsync0 : STD_LOGIC;
+    signal vsync1 : STD_LOGIC;
+    signal vsync2 : STD_LOGIC;
     
     signal disp_active0 : STD_LOGIC;
     signal disp_active1 : STD_LOGIC;
+    signal disp_active2 : STD_LOGIC;
 
     signal char_column0 : STD_LOGIC_VECTOR (3 downto 0);
     signal char_column1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal char_row1    : STD_LOGIC_VECTOR (3 downto 0);
     signal char_row0    : STD_LOGIC_VECTOR (3 downto 0);
 begin
     chargen : VGA_Chargen
@@ -130,9 +137,9 @@ begin
     sync : VGA_Sync_0
     PORT MAP (
         clock  => vga_clk,
-        hsync  => hsync1,
-        vsync  => vsync,
-        active => disp_active1,
+        hsync  => hsync2,
+        vsync  => vsync2,
+        active => disp_active2,
         row    => disp_row,
         column => disp_column
     );
@@ -157,7 +164,7 @@ begin
     begin
         if rising_edge(vga_clk) then
             char_column1 <= disp_column(3 downto 0);
-            char_row0    <= disp_row   (3 downto 0);
+            char_row1    <= disp_row   (3 downto 0);
 
             scr_buff_column <= to_integer(unsigned(disp_column(11 downto 4)));
             scr_buff_row    <= to_integer(unsigned(disp_row   (11 downto 4)));
@@ -168,15 +175,22 @@ begin
     process (vga_clk)
     begin
         if rising_edge(vga_clk) then
+            disp_active1 <= disp_active2;
             disp_active0 <= disp_active1;
             disp_active  <= disp_active0;
 
+            hsync1 <= hsync2;
             hsync0 <= hsync1;
             hsync  <= hsync0;
             
+            vsync1 <= vsync2;
+            vsync0 <= vsync1;
+            vsync  <= vsync0;
+            
             char_column0 <= char_column1;
             char_column  <= char_column0;
-            char_row    <= char_row0;
+            char_row0    <= char_row1;
+            char_row     <= char_row0;
         end if;
     end process;    
 
