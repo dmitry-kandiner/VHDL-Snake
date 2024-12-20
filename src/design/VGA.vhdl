@@ -41,7 +41,7 @@ entity VGA is
         vga_r   : out STD_LOGIC_VECTOR (3 downto 0);
         vga_g   : out STD_LOGIC_VECTOR (3 downto 0);
         vga_b   : out STD_LOGIC_VECTOR (3 downto 0);
-        -- Scren buffer
+        -- Screen buffer
         clkb    : IN STD_LOGIC;
         enb     : IN STD_LOGIC;
         web     : IN STD_LOGIC_VECTOR(0 DOWNTO 0);

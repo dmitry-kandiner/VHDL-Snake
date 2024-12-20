@@ -35,6 +35,8 @@ entity Snake is
     Port (
         sys_clock : in STD_LOGIC;
         reset     : in STD_LOGIC;
+        PS2_CLK   : in STD_LOGIC;
+        PS2_DATA  : in STD_LOGIC;
         vga_r     : out STD_LOGIC_VECTOR(3 downto 0);
         vga_g     : out STD_LOGIC_VECTOR(3 downto 0);
         vga_b     : out STD_LOGIC_VECTOR(3 downto 0);
@@ -49,6 +51,14 @@ architecture Behavioral of Snake is
         clk_in1     : in     std_logic;
         clk_mcu     : out    std_logic;
         clk_vga     : out    std_logic);
+    end component;
+
+    component PS2Receiver is 
+        Port (
+            clk        : in STD_LOGIC;
+            kclk       : in STD_LOGIC;
+            kdata      : in STD_LOGIC;
+            keycodeout : out STD_LOGIC_VECTOR(31 downto 0));
     end component;
 
     component VGA is
@@ -69,6 +79,8 @@ architecture Behavioral of Snake is
             doutb   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
     end component;
 
+    signal keycodes : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+
     signal vga_clock : STD_LOGIC;
 
 begin
@@ -77,6 +89,14 @@ begin
         clk_in1 => sys_clock,
         resetn  => reset,
         clk_vga => vga_clock
+    );
+    
+    kbd : PS2Receiver
+    port map (
+        clk   => sys_clock,
+        kclk  => PS2_CLK,
+        kdata => PS2_DATA,
+        keycodeout => keycodes
     );
 
     display : VGA
@@ -88,7 +108,7 @@ begin
         vga_r   => vga_r,
         vga_g   => vga_g,
         vga_b   => vga_b,
-        -- Scren buffer
+        -- Screen buffer
         clkb    => '0',
         enb     => '0',
         web     => (others => '0'),
