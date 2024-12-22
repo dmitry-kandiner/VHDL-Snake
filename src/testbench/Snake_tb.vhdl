@@ -40,6 +40,8 @@ architecture Behavioral of Snake_tb is
         Port (
             sys_clock : in STD_LOGIC;
             reset     : in STD_LOGIC;
+            PS2_CLK   : in STD_LOGIC;
+            PS2_DATA  : in STD_LOGIC;
             vga_r     : out STD_LOGIC_VECTOR(3 downto 0);
             vga_g     : out STD_LOGIC_VECTOR(3 downto 0);
             vga_b     : out STD_LOGIC_VECTOR(3 downto 0);
@@ -59,6 +61,8 @@ begin
     uut : Snake 
     port map (
         sys_clock => sys_clock,
+        PS2_CLK   => '0',
+        PS2_DATA  => '0',
         reset     => '1',
         vga_r     => vga_r, 
         vga_g     => vga_g, 

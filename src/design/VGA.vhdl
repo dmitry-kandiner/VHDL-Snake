@@ -153,7 +153,7 @@ begin
         douta => char,
 
         clkb  => clkb,
-        enb   => '0',
+        enb   => enb,
         web   => web,
         addrb => addrb,
         dinb  => dinb,
