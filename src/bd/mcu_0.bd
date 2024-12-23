@@ -1,10 +1,10 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1A031F7FA24612A4",
+      "boundary_crc": "0xFAC2E4000D49E2E2",
       "device": "xc7a100tcsg324-1",
       "gen_directory": "../../vivado_project/VHDL-Snake.gen/sources_1/bd/mcu",
-      "name": "mcu",
+      "name": "mcu_0",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
       "tool_version": "2024.1.2",
@@ -18,7 +18,8 @@
         "dlmb_bram_if_cntlr": "",
         "ilmb_bram_if_cntlr": "",
         "lmb_bram": "",
-        "vlbm_bram_if_cntlr": ""
+        "vlbm_bram_if_cntlr": "",
+        "iomodule_0": ""
       },
       "mdm_1": "",
       "rst_Clk_100M": ""
@@ -85,6 +86,19 @@
             "direction": "O",
             "left": "0",
             "right": "3"
+          }
+        }
+      },
+      "KBD_IN_0": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+        "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
+        "port_maps": {
+          "TRI_I": {
+            "physical_name": "KBD_IN_0_tri_i",
+            "direction": "I",
+            "left": "31",
+            "right": "0"
           }
         }
       }
@@ -226,6 +240,11 @@
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
             "vlnv": "xilinx.com:interface:bram_rtl:1.0"
+          },
+          "KBD_IN_0": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+            "vlnv": "xilinx.com:interface:gpio_rtl:1.0"
           }
         },
         "ports": {
@@ -247,7 +266,7 @@
             "inst_hier_path": "microblaze_0_local_memory/dlmb_v10",
             "parameters": {
               "C_LMB_NUM_SLAVES": {
-                "value": "2"
+                "value": "3"
               }
             },
             "interface_ports": {
@@ -256,7 +275,8 @@
                 "mode": "MirroredMaster",
                 "bridges": [
                   "LMB_Sl_0",
-                  "LMB_Sl_1"
+                  "LMB_Sl_1",
+                  "LMB_Sl_2"
                 ]
               }
             }
@@ -332,6 +352,27 @@
             "xci_name": "mcu_lmb_bram_if_cntlr_0_0",
             "xci_path": "ip\\mcu_lmb_bram_if_cntlr_0_0\\mcu_lmb_bram_if_cntlr_0_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/vlbm_bram_if_cntlr"
+          },
+          "iomodule_0": {
+            "vlnv": "xilinx.com:ip:iomodule:3.1",
+            "ip_revision": "10",
+            "xci_name": "mcu_iomodule_0_0",
+            "xci_path": "ip\\mcu_iomodule_0_0\\mcu_iomodule_0_0.xci",
+            "inst_hier_path": "microblaze_0_local_memory/iomodule_0",
+            "parameters": {
+              "C_FIT1_No_CLOCKS": {
+                "value": "100000"
+              },
+              "C_USE_FIT1": {
+                "value": "1"
+              },
+              "C_USE_GPI1": {
+                "value": "1"
+              },
+              "C_USE_IO_BUS": {
+                "value": "0"
+              }
+            }
           }
         },
         "interface_nets": {
@@ -347,10 +388,22 @@
               "VMEM_PORT_0"
             ]
           },
+          "Conn2": {
+            "interface_ports": [
+              "iomodule_0/GPIO1",
+              "KBD_IN_0"
+            ]
+          },
           "dlmb_bram_if_cntlr_BRAM_PORT": {
             "interface_ports": [
               "dlmb_bram_if_cntlr/BRAM_PORT",
               "lmb_bram/BRAM_PORTB"
+            ]
+          },
+          "dlmb_v10_iomodule_0": {
+            "interface_ports": [
+              "dlmb_v10/LMB_Sl_2",
+              "iomodule_0/SLMB"
             ]
           },
           "ilmb_bram_if_cntlr_BRAM_PORT": {
@@ -392,7 +445,8 @@
               "dlmb_bram_if_cntlr/LMB_Rst",
               "ilmb_v10/SYS_Rst",
               "ilmb_bram_if_cntlr/LMB_Rst",
-              "vlbm_bram_if_cntlr/LMB_Rst"
+              "vlbm_bram_if_cntlr/LMB_Rst",
+              "iomodule_0/Rst"
             ]
           },
           "microblaze_0_Clk": {
@@ -402,7 +456,8 @@
               "dlmb_bram_if_cntlr/LMB_Clk",
               "ilmb_v10/LMB_Clk",
               "ilmb_bram_if_cntlr/LMB_Clk",
-              "vlbm_bram_if_cntlr/LMB_Clk"
+              "vlbm_bram_if_cntlr/LMB_Clk",
+              "iomodule_0/Clk"
             ]
           }
         }
@@ -447,6 +502,12 @@
         "interface_ports": [
           "microblaze_0/ILMB",
           "microblaze_0_local_memory/ILMB"
+        ]
+      },
+      "microblaze_0_local_memory_GPIO1_0": {
+        "interface_ports": [
+          "KBD_IN_0",
+          "microblaze_0_local_memory/KBD_IN_0"
         ]
       },
       "microblaze_0_local_memory_VMEM_PORT_0": {
@@ -499,6 +560,12 @@
                 "address_block": "/microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem",
                 "offset": "0x00000000",
                 "range": "64K",
+                "offset_high_param": "C_HIGHADDR"
+              },
+              "SEG_iomodule_0_Reg": {
+                "address_block": "/microblaze_0_local_memory/iomodule_0/SLMB/Reg",
+                "offset": "0x00200000",
+                "range": "4K",
                 "offset_high_param": "C_HIGHADDR"
               },
               "SEG_vmem_bram_if_cntlr_0_Mem": {
