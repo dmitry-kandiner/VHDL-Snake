@@ -27,7 +27,7 @@ set_property(CACHE VITIS_TARGET
 )
 
 set(VITIS_PLATFORM_PATH
-E:\fpga\VHDL-Snake\fw/Snake_platform/export/Snake_platform/Snake_platform.xpfm
+C:\Work\FPGA\VHDL-Snake\fw\Snake_platform\export\Snake_platform\Snake_platform.xpfm
 CACHE STRING
 "Vitis Platform"
 )

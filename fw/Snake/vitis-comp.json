@@ -1,7 +1,7 @@
 {
   "name": "Snake",
   "type": "HOST",
-  "platform": "E:\\fpga\\VHDL-Snake\\fw/Snake_platform/export/Snake_platform/Snake_platform.xpfm",
+  "platform": "C:\\Work\\FPGA\\VHDL-Snake\\fw\\Snake_platform\\export\\Snake_platform\\Snake_platform.xpfm",
   "domain": "standalone_microblaze_0",
   "cpuInstance": "microblaze_0",
   "cpuType": "microblaze",

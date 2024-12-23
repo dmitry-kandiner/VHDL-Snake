@@ -19,4 +19,7 @@
 .repo.yaml
 .vitisWorkspace.json
 
-src/.cache/
+src/.cache
+src/.compile_comands
+src/.clangd
+build

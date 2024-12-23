@@ -3,7 +3,7 @@
   "type": "PLATFORM",
   "configuration": {
     "description": "Snake_platform",
-    "xsa": "E:\\fpga\\VHDL-Snake\\vivado_project\\Snake.xsa",
+    "xsa": "C:\\Work\\FPGA\\VHDL-Snake\\vivado_project\\Snake.xsa",
     "xsaPathInPlatform": "Snake_platform\\hw\\Snake.xsa",
     "emulationXsa": "",
     "emulationXsaPathInPlatform": "",

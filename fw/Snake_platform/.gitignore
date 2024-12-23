@@ -22,3 +22,4 @@
 hw/
 microblaze_0/standalone_microblaze_0/bsp/include/
 microblaze_0/standalone_microblaze_0/bsp/lib/
+microblaze_0/standalone_microblaze_0/bsp/libsrc/

@@ -1,11 +1,11 @@
 sdt: hw_artifacts\microblaze_0_baremetal.dts
 family: artix7
-path: E:\fpga\VHDL-Snake\fw\Snake_platform\microblaze_0\standalone_microblaze_0\bsp
+path: C:\Work\FPGA\VHDL-Snake\fw\Snake_platform\microblaze_0\standalone_microblaze_0\bsp
 config: None
 os: standalone
 os_info:
   standalone:
-    path: E:\Xilinx\Vitis\2024.1\data\embeddedsw\lib\bsp\standalone_v9_1
+    path: C:\Xilinx\Vitis\2024.1\data\embeddedsw\lib\bsp\standalone_v9_1
 os_config:
   standalone:
     standalone_clocking:
@@ -169,10 +169,10 @@ drv_info:
   microblaze_0_local_memory_iomodule_0:
     driver: iomodule
     ip_name: iomodule
-    path: E:\Xilinx\Vitis\2024.1\data\embeddedsw\XilinxProcessorIPLib\drivers\iomodule_v2_16
+    path: C:\Xilinx\Vitis\2024.1\data\embeddedsw\XilinxProcessorIPLib\drivers\iomodule_v2_16
 lib_info:
   xiltimer:
-    path: E:\Xilinx\Vitis\2024.1\data\embeddedsw\lib\sw_services\xiltimer_v2_0
+    path: C:\Xilinx\Vitis\2024.1\data\embeddedsw\lib\sw_services\xiltimer_v2_0
 lib_config:
   xiltimer:
     XILTIMER_en_interval_timer:

@@ -6,7 +6,6 @@
         device_id = "7a100t";
         #address-cells = <0x1>;
         #size-cells = <0x1>;
-        slrcount = <0x1>;
         pruned-sdt = <0x1>;
 
         clock: clocks {

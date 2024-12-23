@@ -3,8 +3,10 @@
 /export
 
 # Ignore object files and dependent files
-.o
-.d
+**/*.o
+**/*.obj
+**/*.a
+**/*.d
 
 #Ignore logs folder and log files
 /logs
@@ -13,8 +15,11 @@
 #Ignore lock files
 .lock
 
+**/_ide/
 .bin
 .pdi
 .peers.ini
 .repo.yaml
 .vitisWorkspace.json
+.theia
+.wsdata
