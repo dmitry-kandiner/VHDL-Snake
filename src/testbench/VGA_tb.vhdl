@@ -48,10 +48,10 @@ architecture Behavioral of VGA_tb is
             -- Scren buffer
             clkb    : IN STD_LOGIC;
             enb     : IN STD_LOGIC;
-            web     : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-            addrb   : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-            dinb    : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-            doutb   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+            web     : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+            addrb   : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+            dinb    : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            doutb   : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
     end component;
 
     signal vga_clock : STD_LOGIC := '0';
