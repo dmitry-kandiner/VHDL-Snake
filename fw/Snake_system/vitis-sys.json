@@ -1,0 +1,23 @@
+{
+  "modelVersion": "1.0",
+  "projectName": "Snake_system",
+  "platform": "E:\\fpga\\VHDL-Snake\\fw/Snake_platform/export/Snake_platform/Snake_platform.xpfm",
+  "externalComponentRefs": [
+    "Snake"
+  ],
+  "components": [],
+  "buildConfigurations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "supportedTargets": [
+        "HW_EMU",
+        "HW"
+      ]
+    }
+  ],
+  "activeBuildConfigId": "default",
+  "hostMode": "x86",
+  "isDirty": true,
+  "applicationFlow": "EMBEDDED"
+}
