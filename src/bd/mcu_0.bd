@@ -7,7 +7,7 @@
       "name": "mcu_0",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.1.2",
+      "tool_version": "2024.1",
       "validated": "true"
     },
     "design_tree": {
@@ -147,8 +147,8 @@
       "microblaze_0": {
         "vlnv": "xilinx.com:ip:microblaze:11.0",
         "ip_revision": "13",
-        "xci_name": "mcu_microblaze_0_0",
-        "xci_path": "ip\\mcu_microblaze_0_0\\mcu_microblaze_0_0.xci",
+        "xci_name": "mcu_0_microblaze_0_0",
+        "xci_path": "ip\\mcu_0_microblaze_0_0\\mcu_0_microblaze_0_0.xci",
         "inst_hier_path": "microblaze_0",
         "parameters": {
           "C_DEBUG_ENABLED": {
@@ -215,7 +215,7 @@
         },
         "hdl_attributes": {
           "BMM_INFO_PROCESSOR": {
-            "value": "microblaze-le > mcu microblaze_0_local_memory/dlmb_bram_if_cntlr",
+            "value": "microblaze-le > mcu_0 microblaze_0_local_memory/dlmb_bram_if_cntlr",
             "value_src": "default"
           },
           "KEEP_HIERARCHY": {
@@ -261,8 +261,8 @@
           "dlmb_v10": {
             "vlnv": "xilinx.com:ip:lmb_v10:3.0",
             "ip_revision": "14",
-            "xci_name": "mcu_dlmb_v10_0",
-            "xci_path": "ip\\mcu_dlmb_v10_0\\mcu_dlmb_v10_0.xci",
+            "xci_name": "mcu_0_dlmb_v10_0",
+            "xci_path": "ip\\mcu_0_dlmb_v10_0\\mcu_0_dlmb_v10_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/dlmb_v10",
             "parameters": {
               "C_LMB_NUM_SLAVES": {
@@ -284,8 +284,8 @@
           "ilmb_v10": {
             "vlnv": "xilinx.com:ip:lmb_v10:3.0",
             "ip_revision": "14",
-            "xci_name": "mcu_ilmb_v10_0",
-            "xci_path": "ip\\mcu_ilmb_v10_0\\mcu_ilmb_v10_0.xci",
+            "xci_name": "mcu_0_ilmb_v10_0",
+            "xci_path": "ip\\mcu_0_ilmb_v10_0\\mcu_0_ilmb_v10_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/ilmb_v10",
             "interface_ports": {
               "LMB_M": {
@@ -300,8 +300,8 @@
           "dlmb_bram_if_cntlr": {
             "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
             "ip_revision": "24",
-            "xci_name": "mcu_dlmb_bram_if_cntlr_0",
-            "xci_path": "ip\\mcu_dlmb_bram_if_cntlr_0\\mcu_dlmb_bram_if_cntlr_0.xci",
+            "xci_name": "mcu_0_dlmb_bram_if_cntlr_0",
+            "xci_path": "ip\\mcu_0_dlmb_bram_if_cntlr_0\\mcu_0_dlmb_bram_if_cntlr_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/dlmb_bram_if_cntlr",
             "parameters": {
               "C_ECC": {
@@ -310,7 +310,7 @@
             },
             "hdl_attributes": {
               "BMM_INFO_ADDRESS_SPACE": {
-                "value": "byte  0x00000000 32 > mcu microblaze_0_local_memory/lmb_bram",
+                "value": "byte  0x00000000 32 > mcu_0 microblaze_0_local_memory/lmb_bram",
                 "value_src": "default"
               },
               "KEEP_HIERARCHY": {
@@ -322,8 +322,8 @@
           "ilmb_bram_if_cntlr": {
             "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
             "ip_revision": "24",
-            "xci_name": "mcu_ilmb_bram_if_cntlr_0",
-            "xci_path": "ip\\mcu_ilmb_bram_if_cntlr_0\\mcu_ilmb_bram_if_cntlr_0.xci",
+            "xci_name": "mcu_0_ilmb_bram_if_cntlr_0",
+            "xci_path": "ip\\mcu_0_ilmb_bram_if_cntlr_0\\mcu_0_ilmb_bram_if_cntlr_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/ilmb_bram_if_cntlr",
             "parameters": {
               "C_ECC": {
@@ -334,8 +334,8 @@
           "lmb_bram": {
             "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
             "ip_revision": "8",
-            "xci_name": "mcu_lmb_bram_0",
-            "xci_path": "ip\\mcu_lmb_bram_0\\mcu_lmb_bram_0.xci",
+            "xci_name": "mcu_0_lmb_bram_0",
+            "xci_path": "ip\\mcu_0_lmb_bram_0\\mcu_0_lmb_bram_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/lmb_bram",
             "parameters": {
               "Memory_Type": {
@@ -349,15 +349,15 @@
           "vlbm_bram_if_cntlr": {
             "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
             "ip_revision": "24",
-            "xci_name": "mcu_lmb_bram_if_cntlr_0_0",
-            "xci_path": "ip\\mcu_lmb_bram_if_cntlr_0_0\\mcu_lmb_bram_if_cntlr_0_0.xci",
+            "xci_name": "mcu_0_vlbm_bram_if_cntlr_0",
+            "xci_path": "ip\\mcu_0_vlbm_bram_if_cntlr_0\\mcu_0_vlbm_bram_if_cntlr_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/vlbm_bram_if_cntlr"
           },
           "iomodule_0": {
             "vlnv": "xilinx.com:ip:iomodule:3.1",
             "ip_revision": "10",
-            "xci_name": "mcu_iomodule_0_0",
-            "xci_path": "ip\\mcu_iomodule_0_0\\mcu_iomodule_0_0.xci",
+            "xci_name": "mcu_0_iomodule_0_0",
+            "xci_path": "ip\\mcu_0_iomodule_0_0\\mcu_0_iomodule_0_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/iomodule_0",
             "parameters": {
               "C_FIT1_No_CLOCKS": {
@@ -465,15 +465,15 @@
       "mdm_1": {
         "vlnv": "xilinx.com:ip:mdm:3.2",
         "ip_revision": "26",
-        "xci_name": "mcu_mdm_1_0",
-        "xci_path": "ip\\mcu_mdm_1_0\\mcu_mdm_1_0.xci",
+        "xci_name": "mcu_0_mdm_1_0",
+        "xci_path": "ip\\mcu_0_mdm_1_0\\mcu_0_mdm_1_0.xci",
         "inst_hier_path": "mdm_1"
       },
       "rst_Clk_100M": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "15",
-        "xci_name": "mcu_rst_Clk_100M_0",
-        "xci_path": "ip\\mcu_rst_Clk_100M_0\\mcu_rst_Clk_100M_0.xci",
+        "xci_name": "mcu_0_rst_Clk_100M_0",
+        "xci_path": "ip\\mcu_0_rst_Clk_100M_0\\mcu_0_rst_Clk_100M_0.xci",
         "inst_hier_path": "rst_Clk_100M",
         "parameters": {
           "RESET_BOARD_INTERFACE": {
