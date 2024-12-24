@@ -18,16 +18,30 @@
  */
 
 #include <stdio.h>
+#include <string.h>
+#include "xparameters.h"
 #include "platform.h"
-#include "xil_printf.h"
 
 
 int main()
 {
+    static uint8_t* const vbuf = (void*)XPAR_LMB_BRAM_1_BASEADDRESS;
+    static const char hello[] = "Hello, world!";
+
     init_platform();
 
-    print("Hello World\n\r");
-    print("Successfully ran Hello World application");
+    for (size_t i = 0; i < sizeof(hello); i++)
+    {
+        vbuf[i] = hello[i];
+    }
+
+    for (int i = 0; i < 40; i++)
+    {
+        vbuf[i] = 0x03;
+    }
+
+    memcpy(vbuf, hello, sizeof(hello));
+
     cleanup_platform();
     return 0;
 }

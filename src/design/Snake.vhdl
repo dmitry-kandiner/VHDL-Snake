@@ -73,7 +73,7 @@ architecture Behavioral of Snake is
             -- Scren buffer
             clkb    : in  STD_LOGIC;
             enb     : in  STD_LOGIC;
-            web     : in  STD_LOGIC_VECTOR( 0 DOWNTO 0);
+            web     : in  STD_LOGIC_VECTOR( 3 DOWNTO 0);
             addrb   : in  STD_LOGIC_VECTOR( 8 DOWNTO 0);
             dinb    : in  STD_LOGIC_VECTOR(31 DOWNTO 0);
             doutb   : out STD_LOGIC_VECTOR(31 DOWNTO 0));
@@ -98,14 +98,6 @@ architecture Behavioral of Snake is
     signal mcu_clock : STD_LOGIC;
     signal vga_clock : STD_LOGIC;
 
-    signal vga_en   : STD_LOGIC;
-    signal vga_we   : STD_LOGIC_VECTOR( 0 downto 0);
-    signal vga_addr : STD_LOGIC_VECTOR( 8 downto 0);
-    signal vga_din  : STD_LOGIC_VECTOR(31 downto 0);
-    signal vga_dout : STD_LOGIC_VECTOR(31 downto 0);
-
-    alias vga_dout_inv : STD_LOGIC_VECTOR(vga_dout'reverse_range ) is vga_dout;
-
     signal vmem_en   : STD_LOGIC;   
     signal vmem_we   : STD_LOGIC_VECTOR(0 to  3);
     signal vmem_addr : STD_LOGIC_VECTOR(0 to 31);
@@ -114,6 +106,8 @@ architecture Behavioral of Snake is
 
     alias vmem_addr_inv : STD_LOGIC_VECTOR(vmem_addr'reverse_range) is vmem_addr;
     alias vmem_din_inv  : STD_LOGIC_VECTOR(vmem_din'reverse_range ) is vmem_din;
+    alias vmem_dout_inv : STD_LOGIC_VECTOR(vmem_dout'reverse_range) is vmem_dout;
+    alias vmem_we_inv   : STD_LOGIC_VECTOR(vmem_we'reverse_range  ) is vmem_we;
 
 begin
     clocks : clk_wiz_0
@@ -143,11 +137,11 @@ begin
         vga_b   => vga_b,
         -- Screen buffer
         clkb    => mcu_clock,
-        enb     => vga_en,
-        web     => vga_we,
-        addrb   => vga_addr,
-        dinb    => vga_din,
-        doutb   => vga_dout
+        enb     => vmem_en,
+        web     => vmem_we_inv,
+        addrb   => vmem_addr_inv(10 downto 2),
+        dinb    => vmem_din_inv,
+        doutb   => vmem_dout_inv
     );
     
     mcu : mcu_0
@@ -162,20 +156,4 @@ begin
         VMEM_PORT_0_we   => vmem_we,
         KBD_IN_0_tri_i   => keycodes
     );
-
-    process (mcu_clock)
-    begin
-        if rising_edge(mcu_clock) then
-            vga_en    <= vmem_en;
-            vga_addr  <= vmem_addr_inv(8 downto 0);
-            vga_din   <= vmem_din_inv;
-            vga_we(0) <= vmem_we(0) or vmem_we(1) or vmem_we(2) or vmem_we(3);
-            if vmem_we(0) /= '1' then vga_din( 7 downto  0) <= (others => 'Z'); end if;
-            if vmem_we(1) /= '1' then vga_din(15 downto  8) <= (others => 'Z'); end if;
-            if vmem_we(2) /= '1' then vga_din(23 downto 16) <= (others => 'Z'); end if;
-            if vmem_we(3) /= '1' then vga_din(31 downto 24) <= (others => 'Z'); end if;
-            vmem_dout <= vga_dout_inv;
-        end if;
-    end process;
-
 end Behavioral;

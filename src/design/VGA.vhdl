@@ -44,7 +44,7 @@ entity VGA is
         -- Screen buffer
         clkb    : IN STD_LOGIC;
         enb     : IN STD_LOGIC;
-        web     : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+        web     : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         addrb   : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
         dinb    : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         doutb   : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
@@ -80,7 +80,7 @@ architecture Behavioral of VGA is
 
             clkb  : IN STD_LOGIC;
             enb   : IN STD_LOGIC;
-            web   : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+            web   : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             addrb : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
             dinb  : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
             doutb : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
