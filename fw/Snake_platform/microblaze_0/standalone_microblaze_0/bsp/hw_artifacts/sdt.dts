@@ -34,8 +34,8 @@
                         compatible = "cpus,cluster";
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        address-map = <0x0 &microblaze_0_local_memory_dlmb_bram_if_cntlr_memory 0x0 0x10000>,
-                         <0x0 &microblaze_0_local_memory_dlmb_bram_if_cntlr 0x0 0x10000>,
+                        address-map = <0x0 &microblaze_0_local_memory_dlmb_bram_if_cntlr_memory 0x0 0x40000>,
+                         <0x0 &microblaze_0_local_memory_dlmb_bram_if_cntlr 0x0 0x40000>,
                          <0x100000 &microblaze_0_local_memory_vlbm_bram_if_cntlr_memory 0x100000 0x1000>,
                          <0x100000 &microblaze_0_local_memory_vlbm_bram_if_cntlr 0x100000 0x1000>,
                          <0x200000 &microblaze_0_local_memory_iomodule_0 0x200000 0x1000>;
@@ -205,7 +205,7 @@
                         xlnx,arbitration = <0x0>;
                         xlnx,num-lmb = <0x1>;
                         xlnx,mask4 = <0x0 0x800000>;
-                        reg = <0x0 0x10000>;
+                        reg = <0x0 0x40000>;
                         xlnx,s-axi-ctrl-addr-width = <0x20>;
                         xlnx,mask5 = <0x0 0x800000>;
                         xlnx,ecc-status-registers = <0x0>;
@@ -420,7 +420,7 @@
                 xlnx,ip-name = "lmb_bram_if_cntlr";
                 device_type = "memory";
                 memory_type = "memory";
-                reg = <0x0 0x10000>;
+                reg = <0x0 0x40000>;
                 phandle = <0x1>;
         };
 

@@ -180,7 +180,7 @@
 			xlnx,arbitration = <0>;
 			xlnx,num-lmb = <1>;
 			xlnx,mask4 = <0x00000000 0x00800000>;
-			reg = <0x00000000 0x10000>;
+			reg = <0x00000000 0x40000>;
 			xlnx,s-axi-ctrl-addr-width = <32>;
 			xlnx,mask5 = <0x00000000 0x00800000>;
 			xlnx,ecc-status-registers = <0>;

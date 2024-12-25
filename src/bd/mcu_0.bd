@@ -559,7 +559,7 @@
               "SEG_dlmb_bram_if_cntlr_Mem": {
                 "address_block": "/microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem",
                 "offset": "0x00000000",
-                "range": "64K",
+                "range": "256K",
                 "offset_high_param": "C_HIGHADDR"
               },
               "SEG_iomodule_0_Reg": {
