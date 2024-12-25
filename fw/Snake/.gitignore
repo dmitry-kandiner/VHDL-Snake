@@ -22,4 +22,5 @@
 src/.cache
 src/.compile_comands
 src/.clangd
+src/compile_commands.json
 build
