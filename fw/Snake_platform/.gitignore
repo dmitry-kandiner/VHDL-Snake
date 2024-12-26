@@ -1,0 +1,25 @@
+# Ignore build output directory
+/build
+/export
+
+# Ignore object files and dependent files
+.o
+.d
+
+#Ignore logs folder and log files
+/logs
+.log
+
+#Ignore lock files
+.lock
+
+.bin
+.pdi
+.peers.ini
+.repo.yaml
+.vitisWorkspace.json
+
+hw/
+microblaze_0/standalone_microblaze_0/bsp/include/
+microblaze_0/standalone_microblaze_0/bsp/lib/
+microblaze_0/standalone_microblaze_0/bsp/libsrc/
