@@ -53,8 +53,14 @@ void scr_draw_border(void)
     }
 }
 
-void scr_draw_score(uint32_t score)
+void scr_print_score(uint32_t score)
 {
     scr_puts(0, 0, "Score: ");
     scr_putnum(7, 0, score, '0', 6);
+}
+
+void scr_print_level(uint32_t level)
+{
+    scr_putnum(SCR_COLS - 2, 0, level, '0', 2);
+    scr_puts(SCR_COLS - 9, 0, "Level: ");
 }

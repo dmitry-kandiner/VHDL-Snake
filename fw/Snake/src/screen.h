@@ -28,8 +28,10 @@ typedef enum {
 void scr_clear(void);
 void scr_putch(uint32_t col, uint32_t row, char ch);
 void scr_puts(uint32_t col, uint32_t row, const char* const str);
+void scr_putnum(uint32_t col, uint32_t row, uint32_t num, char padding, uint32_t width);
 
 void scr_draw_border(void);
-void scr_draw_score(uint32_t score);
+void scr_print_score(uint32_t score);
+void scr_print_level(uint32_t level);
 
 #endif // SCREEN_H
