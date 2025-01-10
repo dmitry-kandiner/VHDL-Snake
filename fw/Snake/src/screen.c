@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdint.h>
 #include <memory.h>
 #include "screen.h"
@@ -22,7 +21,24 @@ void scr_putch(uint32_t col, uint32_t row, char ch)
 
 void scr_puts(uint32_t col, uint32_t row, const char* const str)
 {
-    strcpy(&vmem[row][col], str);
+    for (uint32_t i = 0; str[i] != '\0'; i++) vmem[row][col + i] = str[i];
+}
+
+#define MAX_DIGITS  (sizeof(buffer) - 1)
+void scr_putnum(uint32_t col, uint32_t row, uint32_t num, char padding, uint32_t width)
+{
+    static char buffer[11] = {'\0'};
+
+    uint32_t last_free_place = MAX_DIGITS;
+    do {
+        buffer[--last_free_place] = '0' + num % 10;
+        num /= 10;
+    } while (num > 0);
+    while (MAX_DIGITS - last_free_place < width)
+    {
+        buffer[--last_free_place] = padding;
+    }
+    scr_puts(col, row, &buffer[last_free_place]);
 }
 
 void scr_draw_border(void)
@@ -39,7 +55,6 @@ void scr_draw_border(void)
 
 void scr_draw_score(uint32_t score)
 {
-    char buffer[32];
-    sprintf(buffer, "Score: %06lu", score);
-    scr_puts(0, 0, buffer);
+    scr_puts(0, 0, "Score: ");
+    scr_putnum(7, 0, score, '0', 6);
 }

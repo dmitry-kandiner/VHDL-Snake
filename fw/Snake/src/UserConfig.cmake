@@ -94,7 +94,7 @@ set(USER_LINK_NO_START_FILES )
 set(USER_LINK_NO_DEFAULT_LIBS )
 
 # Do not use the standard system startup files or libraries when linking. (-nostdlib)
-set(USER_LINK_NO_STDLIB )
+set(USER_LINK_NO_STDLIB -nostdlib)
 
 # Omit all symbol information (-s)
 set(USER_LINK_OMIT_ALL_SYMBOL_INFO )
