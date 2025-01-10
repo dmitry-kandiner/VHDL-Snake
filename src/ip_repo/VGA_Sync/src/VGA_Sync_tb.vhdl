@@ -39,12 +39,12 @@ architecture Behavioral of VGA_Sync_tb is
     component VGA_Sync is
         Generic (
             h_sync_pulse  : integer;
-            h_sync_neg    : boolean;
+            h_sync_neg    : std_logic;
             h_front_porch : integer;
             h_active      : integer;
             h_back_porch  : integer;
             v_sync_pulse  : integer;
-            v_sync_neg    : boolean;
+            v_sync_neg    : std_logic;
             v_front_porch : integer;
             v_active      : integer;
             v_back_porch  : integer);
@@ -62,17 +62,18 @@ architecture Behavioral of VGA_Sync_tb is
     
     constant px_clock_period : time := 40ns;
 begin
+    -- 800x600@72Hz, hsync+, vsync+, pixel clock 50MHz 
     uut: VGA_Sync
     generic map (
         h_active      => 800,
         h_front_porch => 56,
         h_sync_pulse  => 120,
-        h_sync_neg    => true,
+        h_sync_neg    => '0',
         h_back_porch  => 64,
         v_active      => 600,
         v_front_porch => 37,
         v_sync_pulse  => 6,
-        v_sync_neg    => false,
+        v_sync_neg    => '0',
         v_back_porch  => 23)
     port map (
         clock  => clock,

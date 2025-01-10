@@ -37,12 +37,12 @@ entity VGA_Sync is
     -- 640x480@73Hz, vsync-, hsync-, pixel clock 31.5MHz 
     Generic (
         h_sync_pulse  : integer := 40;
-        h_sync_neg    : boolean := true; 
+        h_sync_neg    : std_logic := '1'; 
         h_front_porch : integer := 24; 
         h_active      : integer := 640;
         h_back_porch  : integer := 128;
         v_sync_pulse  : integer := 2;  
-        v_sync_neg    : boolean := true; 
+        v_sync_neg    : std_logic := '1'; 
         v_front_porch : integer := 9;  
         v_active      : integer := 480;
         v_back_porch  : integer := 29); 
@@ -107,8 +107,8 @@ begin
         active => v_display,
         index   => sig_row);
         
-    hsync  <= h_sync when h_sync_neg = false else not h_sync; 
-    vsync  <= v_sync when v_sync_neg = false else not v_sync;
+    hsync  <= h_sync when h_sync_neg = '0' else not h_sync; 
+    vsync  <= v_sync when v_sync_neg = '0' else not v_sync;
     active <= h_display and v_display;
     row    <= sig_row;
     column <= sig_col; 

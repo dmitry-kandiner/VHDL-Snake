@@ -18,7 +18,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>982dbb2c</spirit:value>
+            <spirit:value>27302ab0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -34,7 +34,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>982dbb2c</spirit:value>
+            <spirit:value>27302ab0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -49,7 +49,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>63a3f405</spirit:value>
+            <spirit:value>3a0fc41f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -63,7 +63,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>344c0936</spirit:value>
+            <spirit:value>fbd6b357</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -176,10 +176,10 @@
         <spirit:displayName>H Sync Pulse</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.h_sync_pulse">40</spirit:value>
       </spirit:modelParameter>
-      <spirit:modelParameter spirit:dataType="boolean">
+      <spirit:modelParameter spirit:dataType="std_logic">
         <spirit:name>h_sync_neg</spirit:name>
         <spirit:displayName>H Sync Neg</spirit:displayName>
-        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.h_sync_neg">true</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.h_sync_neg" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>h_front_porch</spirit:name>
@@ -201,10 +201,10 @@
         <spirit:displayName>V Sync Pulse</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.v_sync_pulse">2</spirit:value>
       </spirit:modelParameter>
-      <spirit:modelParameter spirit:dataType="boolean">
+      <spirit:modelParameter spirit:dataType="std_logic">
         <spirit:name>v_sync_neg</spirit:name>
         <spirit:displayName>V Sync Neg</spirit:displayName>
-        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.v_sync_neg">true</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.v_sync_neg" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>v_front_porch</spirit:name>
@@ -223,6 +223,13 @@
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_pairs_ab6bb74e</spirit:name>
+      <spirit:enumeration spirit:text="Negative">1</spirit:enumeration>
+      <spirit:enumeration spirit:text="Positive">0</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
   <spirit:fileSets>
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
@@ -265,7 +272,7 @@
       <spirit:file>
         <spirit:name>xgui/VGA_Sync_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_344c0936</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_fbd6b357</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -286,8 +293,8 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>h_sync_neg</spirit:name>
-      <spirit:displayName>Horizontal sync polarity is negative</spirit:displayName>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.h_sync_neg">true</spirit:value>
+      <spirit:displayName>Horizontal sync polarity</spirit:displayName>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.h_sync_neg" spirit:choiceRef="choice_pairs_ab6bb74e" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>h_front_porch</spirit:name>
@@ -311,8 +318,8 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>v_sync_neg</spirit:name>
-      <spirit:displayName>Vertical sync polarity is negative</spirit:displayName>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.v_sync_neg">true</spirit:value>
+      <spirit:displayName>Vertical sync polarity</spirit:displayName>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.v_sync_neg" spirit:choiceRef="choice_pairs_ab6bb74e" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>v_front_porch</spirit:name>
@@ -346,15 +353,15 @@
       <xilinx:displayName>VGA Sync</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>User-made custom IPs</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-12-14T17:43:36Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>17</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-12-26T10:02:15Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2024.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="2be2c5d7"/>
+      <xilinx:xilinxVersion>2024.1.2</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="40d12ae0"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="153bc134"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="7356f941"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="4fa80aff"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="737cbc88"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="7ed42450"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
