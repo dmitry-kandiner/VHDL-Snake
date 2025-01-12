@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 typedef enum {
+    kbd_key_none,
     kbd_key_unknown,
     kbd_key_up,
     kbd_key_left,
