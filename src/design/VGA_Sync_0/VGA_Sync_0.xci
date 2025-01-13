@@ -3,17 +3,17 @@
   "ip_inst": {
     "xci_name": "VGA_Sync_0",
     "component_reference": "user.ip:user:VGA_Sync:1.0",
-    "ip_revision": "4",
+    "ip_revision": "17",
     "gen_directory": "../../../vivado_project/VHDL-Snake.gen/sources_1/ip/VGA_Sync_0",
     "parameters": {
       "component_parameters": {
         "h_sync_pulse": [ { "value": "40", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "h_sync_neg": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "h_sync_neg": [ { "value": "\"1\"", "value_src": "user", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
         "h_front_porch": [ { "value": "24", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "h_active": [ { "value": "640", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "h_back_porch": [ { "value": "128", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "v_sync_pulse": [ { "value": "2", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "v_sync_neg": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "v_sync_neg": [ { "value": "\"1\"", "value_src": "user", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
         "v_front_porch": [ { "value": "9", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "v_active": [ { "value": "480", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "v_back_porch": [ { "value": "29", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -21,12 +21,12 @@
       },
       "model_parameters": {
         "h_sync_pulse": [ { "value": "40", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "h_sync_neg": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
+        "h_sync_neg": [ { "value": "\"1\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "h_front_porch": [ { "value": "24", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "h_active": [ { "value": "640", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "h_back_porch": [ { "value": "128", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "v_sync_pulse": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "v_sync_neg": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
+        "v_sync_neg": [ { "value": "\"1\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "v_front_porch": [ { "value": "9", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "v_active": [ { "value": "480", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "v_back_porch": [ { "value": "29", "resolve_type": "generated", "format": "long", "usage": "all" } ]
@@ -47,7 +47,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "4" } ],
+        "IPREVISION": [ { "value": "17" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../vivado_project/VHDL-Snake.gen/sources_1/ip/VGA_Sync_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

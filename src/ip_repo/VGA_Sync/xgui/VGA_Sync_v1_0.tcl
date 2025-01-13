@@ -9,7 +9,7 @@ proc init_gui { IPINST } {
   set_property tooltip {Horizontal resolution, pixels} ${h_active}
   set h_sync_pulse [ipgui::add_param $IPINST -name "h_sync_pulse" -parent ${Horizontal}]
   set_property tooltip {Horizontal sync pulse width, pixels} ${h_sync_pulse}
-  ipgui::add_param $IPINST -name "h_sync_neg" -parent ${Horizontal}
+  ipgui::add_param $IPINST -name "h_sync_neg" -parent ${Horizontal} -widget comboBox
   set h_front_porch [ipgui::add_param $IPINST -name "h_front_porch" -parent ${Horizontal}]
   set_property tooltip {Horizontal front porch, pixels} ${h_front_porch}
   set h_back_porch [ipgui::add_param $IPINST -name "h_back_porch" -parent ${Horizontal}]
@@ -23,11 +23,11 @@ proc init_gui { IPINST } {
   set_property tooltip {Horizontal back porch, lines} ${v_back_porch}
   set v_sync_pulse [ipgui::add_param $IPINST -name "v_sync_pulse" -parent ${Vertical}]
   set_property tooltip {Vertical sync pulse width, lines} ${v_sync_pulse}
-  ipgui::add_param $IPINST -name "v_sync_neg" -parent ${Vertical}
+  ipgui::add_param $IPINST -name "v_sync_neg" -parent ${Vertical} -widget comboBox
   set v_front_porch [ipgui::add_param $IPINST -name "v_front_porch" -parent ${Vertical}]
   set_property tooltip {Vertical front porch, lines} ${v_front_porch}
 
-  ipgui::add_static_text $IPINST -name "Info" -parent ${Page_0} -text {The default settings correspond to VGA mode 640x480@73Hz, with pixe clock of 31.5MHz, vsync-, hsync-}
+  ipgui::add_static_text $IPINST -name "Info" -parent ${Page_0} -text {The default settings correspond to VGA mode 640x480@73Hz, with pixel clock of 31.5MHz, vsync-, hsync-}
 
 
 }
