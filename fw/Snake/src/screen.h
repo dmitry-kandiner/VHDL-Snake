@@ -2,11 +2,13 @@
 #define SCREEN_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define SCR_ROWS        (30)
 #define SCR_COLS        (40)
 
 typedef enum {
+    scr_empty      = 0x00,
     scr_wall       = 0x01,
     scr_prize      = 0x02,
     scr_head_left  = 0x04,
@@ -19,8 +21,8 @@ typedef enum {
     scr_tail_down  = 0x0B,
     scr_corner_ul  = 0x0C,
     scr_corner_ur  = 0x0D,
-    scr_corner_bl  = 0x0E,
-    scr_corner_br  = 0x0F,
+    scr_corner_br  = 0x0E,
+    scr_corner_bl  = 0x0F,
     scr_body_horz  = 0x10,
     scr_body_vert  = 0x11
 } scr_special;
@@ -29,6 +31,8 @@ void scr_clear(void);
 void scr_putch(uint32_t col, uint32_t row, char ch);
 void scr_puts(uint32_t col, uint32_t row, const char* const str);
 void scr_putnum(uint32_t col, uint32_t row, uint32_t num, char padding, uint32_t width);
+
+bool scr_is_empty(uint32_t col, uint32_t row);
 
 void scr_draw_border(void);
 void scr_print_score(uint32_t score);
