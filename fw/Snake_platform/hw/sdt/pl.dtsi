@@ -180,7 +180,7 @@
 			xlnx,arbitration = <0>;
 			xlnx,num-lmb = <1>;
 			xlnx,mask4 = <0x00000000 0x00800000>;
-			reg = <0x00000000 0x40000>;
+			reg = <0x00000000 0x10000>;
 			xlnx,s-axi-ctrl-addr-width = <32>;
 			xlnx,mask5 = <0x00000000 0x00800000>;
 			xlnx,ecc-status-registers = <0>;
@@ -272,7 +272,7 @@
 			xlnx,use-gpo2 = <0>;
 			xlnx,uart-data-bits = <8>;
 			xlnx,lmb-protocol = <0>;
-			xlnx,pit-prescaler = < 0 0 0 0 >;
+			xlnx,pit-prescaler = < 1 0 0 0 >;
 			xlnx,use-gpo3 = <0>;
 			xlnx,fit2-no-clocks = <6216>;
 			xlnx,gpio1-board-interface = "Custom";
@@ -296,7 +296,7 @@
 			xlnx,gpi1-size = <32>;
 			xlnx,pit3-interrupt = <0>;
 			xlnx,intc-has-fast = <0>;
-			xlnx,pit-used = < 0 0 0 0 >;
+			xlnx,pit-used = < 1 0 0 0 >;
 			xlnx,use-gpi1 = <1>;
 			xlnx,gpi1-interrupt = <0>;
 			xlnx,use-gpi2 = <0>;
@@ -313,7 +313,7 @@
 			xlnx,pit-mask = <0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF>;
 			xlnx,uart-prog-baudrate = <0>;
 			xlnx,uart-freq = <100000000>;
-			xlnx,use-pit1 = <0>;
+			xlnx,use-pit1 = <1>;
 			xlnx,gpo2-size = <32>;
 			xlnx,use-pit2 = <0>;
 			xlnx,pit4-size = <32>;
@@ -323,7 +323,7 @@
 			xlnx,pit4-interrupt = <0>;
 			xlnx,gpi3-size = <32>;
 			xlnx,intc-async-intr = <0xFFFF>;
-			xlnx,pit1-prescaler = <0>;
+			xlnx,pit1-prescaler = <1>;
 			xlnx,avoid-primitives = <0>;
 			xlnx,gpi2-interrupt = <0>;
 			xlnx,io-bus-error-signals = <0>;

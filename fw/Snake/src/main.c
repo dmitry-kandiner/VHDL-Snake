@@ -1,17 +1,20 @@
 #include <stdbool.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include "platform.h"
 
 #include "main.h"
 #include "screen.h"
 #include "keyboard.h"
+#include "timer.h"
 #include "snake.h"
 
 #define BASIC_LEVELS            (5)
-
 #define PRIZES_FOR_LEVEL_UP     (15)
+
+#define SNAKE_SPEED_MIN     (250)
+#define SNAKE_SPEED_MAX     (100)
+#define SNAKE_ACCEL         (25)
 
 #define SNAKE_STAR_COL  (17)
 #define SNAKE_STAR_ROW  (6)
@@ -33,6 +36,7 @@ static struct {
     direction_t snake_dir;
     position_t prize;
     uint32_t prizes_collected;
+    uint32_t speed;
 } game = {
     .state = st_init,
 };
@@ -50,30 +54,34 @@ static uint32_t get_growth_rate(void);
 
 int main()
 {
-    init_platform();
+    uint32_t last_time;
+    uint32_t time;
 
-    srand(0);
-    
+    init_platform();
+    tim_init();
+
     while (game.state != st_exit)
     {
-        usleep(250000);        
         switch (game.state)
         {
             case st_init:
                 game.score = 0;
                 game.level = 0;
+                game.speed = SNAKE_SPEED_MIN;
                 display_logo();
                 game.state = st_wait_for_start;
                 break;
 
             case st_wait_for_start:
                 if (kbd_get_last_key() == kbd_key_none) break;
+                srand(tim_get());
                 game.prizes_collected = 0;
                 display_level(game.level);
                 setup_snake();
                 snake_display(game.snake_head);
                 setup_prize();
                 display_prize();
+                last_time = tim_get();
                 game.state = st_playing;
                 break;
 
@@ -92,14 +100,23 @@ int main()
 
                     default: break;
                 }
+                time = tim_get();
+                if (last_time - time < game.speed) break;
+                last_time = time;
                 process_game();
                 break;
 
             case st_pause:
-                if (kbd_get_last_key() == kbd_key_none) break;
+                switch (kbd_get_last_key())
+                {
+                    case kbd_key_none:   continue;
+                    case kbd_key_escape: continue;
+                    default: break;
+                }
                 display_level(game.level);
                 snake_display(game.snake_head);
                 display_prize();
+                last_time = tim_get();
                 game.state = st_playing;
                 break;
 
@@ -241,6 +258,7 @@ static void process_game(void)
         if (game.prizes_collected == PRIZES_FOR_LEVEL_UP)
         {
             game.level++;
+            if ((game.level % BASIC_LEVELS == 0) && (game.speed > SNAKE_SPEED_MAX)) game.speed -= SNAKE_ACCEL;
             display_level_up();
             game.state = st_wait_for_start;
             return;
