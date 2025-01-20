@@ -1,148 +1,46 @@
-#include <stdbool.h>
-#include <stdlib.h>
+#include <stdint.h>
 #include <memory.h>
-#include <time.h>
 
-#include "platform.h"
-
+#include "snake.h"
 #include "screen.h"
-#include "keyboard.h"
 
-#define MAX_SNAKE_LENGTH    (64)
-
-typedef enum {
-    dir_up,
-    dir_right,
-    dir_down,
-    dir_left
-} direction;
-
-static struct {
-    uint32_t level;
-    uint32_t score;
-    struct {
-        uint32_t length;
-        char     body[MAX_SNAKE_LENGTH];
-        uint32_t head_col;
-        uint32_t head_row;
-    } snake;
-    uint32_t prize_col;
-    uint32_t prize_row;
-} game = {
-    0
+static const char neck[directions_count][directions_count] = {
+//  dir:  up             right          down           left      |  curr_dir:
+    { scr_body_vert, scr_corner_ul, scr_body_vert, scr_corner_ur }, // up
+    { scr_corner_br, scr_body_horz, scr_corner_ur, scr_body_horz }, // right
+    { scr_body_vert, scr_corner_bl, scr_body_vert, scr_corner_br }, // down
+    { scr_corner_bl, scr_body_horz, scr_corner_ul, scr_body_horz }  // left
 };
 
-static void init_level(uint32_t level);
-static void draw_snake(void);
-static void place_prize(void);
+static struct {
+    uint32_t length;
+    char     body[MAX_SNAKE_LENGTH];
+    uint32_t growth;
+    uint32_t tail_col;
+    uint32_t tail_row;
+} snake;
 
-int main()
+void snake_init(const char* const body, uint32_t length)
 {
-    init_platform();
-
-    srand(time(0));
-
-    init_level(game.level);
-
-    kbd_key prev_key = kbd_key_unknown;
-    for(;;)
-    {
-        kbd_key key = kbd_get_last_key();
-
-        if (prev_key == key) continue;
-        prev_key = key;
-
-        if (key == kbd_key_none) continue;
-
-        place_prize();
-
-        game.level++;
-        init_level(game.level);
-    }
-
-    cleanup_platform();
-    return 0;
+    if (length > MAX_SNAKE_LENGTH) length = MAX_SNAKE_LENGTH;
+    memcpy(snake.body, body, length);
+    snake.length = length;
+    snake.tail_col = 0;
+    snake.tail_row = 0;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-#define MAX_LEVELS      (5)
-static void init_level(uint32_t level)
+void snake_display(position_t head)
 {
-    static const char snake[] = { scr_head_left, scr_body_horz, scr_body_horz, scr_body_horz, scr_body_horz, scr_tail_right };
-    // static const char snake[] = {
-    //     scr_head_left, scr_body_horz, scr_body_horz, scr_corner_ur, scr_body_vert,
-    //     scr_body_vert, scr_corner_bl, scr_body_horz, scr_body_horz, scr_corner_br,
-    //     scr_body_vert, scr_body_vert, scr_body_vert, scr_corner_ur, scr_body_horz, 
-    //     scr_corner_ul, scr_corner_bl, scr_corner_ur, scr_corner_br, scr_tail_left };
+    uint32_t col = head.col;
+    uint32_t row = head.row;
+    uint32_t tail_col;
+    uint32_t tail_row;
+    direction_t dir;
 
-    memcpy(game.snake.body, snake, sizeof(snake));
-    game.snake.length = sizeof(snake);
-    game.snake.head_col = 17;
-    game.snake.head_row = 6;
-
-    scr_clear();
-    scr_print_score(game.score);
-    scr_print_level(game.level + 1);
-    scr_draw_border();
-    switch (level % MAX_LEVELS)
+    for (uint32_t i = 0; i < snake.length; i++)
     {
-        case 0:
-            break;
-        case 1:
-            for (uint32_t col = 14; col < 26; col++)
-            {
-                scr_putch(col, 15, scr_wall);
-            }
-            break;
-        case 2:
-            for (uint32_t row = 11; row < 20; row++)
-            {
-                scr_putch(14, row, scr_wall);
-                scr_putch(25, row, scr_wall);
-            }
-            break;
-        case 3:
-            for (uint32_t row = 11; row < 20; row++)
-            {
-                scr_putch(14, row, scr_wall);
-                scr_putch(25, row, scr_wall);
-            }
-            for (uint32_t col = 15; col < 25; col++)
-            {
-                scr_putch(col, 15, scr_wall);
-            }
-            break;
-        case 4:
-            for (uint32_t row = 11; row < 14; row++)
-            {
-                scr_putch(14, row, scr_wall);
-                scr_putch(25, row, scr_wall);
-            }
-            for (uint32_t row = 17; row < 20; row++)
-            {
-                scr_putch(14, row, scr_wall);
-                scr_putch(25, row, scr_wall);
-            }
-            for (uint32_t col = 15; col < 25; col++)
-            {
-                scr_putch(col, 11, scr_wall);
-                scr_putch(col, 19, scr_wall);
-            }
-            break;
-    }
-    draw_snake();
-}
-
-static void draw_snake(void)
-{
-    uint32_t col = game.snake.head_col;
-    uint32_t row = game.snake.head_row;
-    direction dir;
-
-    for (uint32_t i = 0; i < game.snake.length; i++)
-    {
-        scr_putch(col, row, game.snake.body[i]);
-        switch (game.snake.body[i])
+        scr_putch(col, row, snake.body[i]);
+        switch (snake.body[i])
         {
             case scr_head_up:    dir = dir_down;  break;
             case scr_head_right: dir = dir_left;  break;
@@ -153,24 +51,74 @@ static void draw_snake(void)
             case scr_corner_bl:  dir = (dir == dir_left)  ? dir_up   : dir_right; break;
             case scr_corner_br:  dir = (dir == dir_right) ? dir_up   : dir_left;  break;
         }
+        tail_col = col;
+        tail_row = row;
         switch (dir)
         {
             case dir_up:    row--; break;
             case dir_right: col++; break;
             case dir_down:  row++; break;
             case dir_left:  col--; break;
+            default: break;
         }
     }
+    if ((snake.tail_col != 0) || (snake.tail_row != 0))
+    {
+        scr_putch(snake.tail_col, snake.tail_row, scr_empty);
+    }
+    snake.tail_col = tail_col;
+    snake.tail_row = tail_row;
 }
 
-static void place_prize(void)
+position_t snake_move(position_t head, direction_t dir)
 {
-    uint32_t col;
-    uint32_t row;
-    do {
-        col = 1 + rand() % (SCR_COLS - 2);
-        row = 2 + rand() % (SCR_ROWS - 3);
-    } while (!scr_is_empty(col, row));
-    game.prize_col = col;
-    game.prize_row = row;
+    if (snake.growth == 0)
+    {
+        char tail = snake.body[snake.length - 1];
+        switch (snake.body[snake.length - 2])
+        {
+            case scr_corner_ul: tail = (tail == scr_tail_right) ? scr_tail_up   : scr_tail_left; break;
+            case scr_corner_ur: tail = (tail == scr_tail_left ) ? scr_tail_up   : scr_tail_right;  break;
+            case scr_corner_bl: tail = (tail == scr_tail_right) ? scr_tail_down : scr_tail_left; break;
+            case scr_corner_br: tail = (tail == scr_tail_left ) ? scr_tail_down : scr_tail_right;  break;
+        }
+        snake.body[snake.length - 1] = tail;
+        memmove(&snake.body[2], &snake.body[1], snake.length - 3);
+    }
+    else
+    {
+        if (snake.length < MAX_SNAKE_LENGTH)
+        {
+            memmove(&snake.body[2], &snake.body[1], snake.length - 1);
+            snake.length++;
+            snake.tail_col = 0;
+            snake.tail_row = 0;
+        }            
+        snake.growth--;
+    }
+
+    direction_t curr_dir;
+    switch (snake.body[0])
+    {
+        case scr_head_up:    curr_dir = dir_up;    if (dir == dir_down)  dir = curr_dir; break;
+        case scr_head_right: curr_dir = dir_right; if (dir == dir_left)  dir = curr_dir; break;
+        case scr_head_down:  curr_dir = dir_down;  if (dir == dir_up)    dir = curr_dir; break;
+        case scr_head_left:  curr_dir = dir_left;  if (dir == dir_right) dir = curr_dir; break;
+    }
+    snake.body[1] = neck[curr_dir][dir];
+
+    switch (dir)
+    {
+        case dir_up:    head.row--; snake.body[0] = scr_head_up;    break;
+        case dir_right: head.col++; snake.body[0] = scr_head_right; break;
+        case dir_down:  head.row++; snake.body[0] = scr_head_down;  break;
+        case dir_left:  head.col--; snake.body[0] = scr_head_left;  break;
+        default: break;
+    }
+    return head;
+}
+
+void snake_grow(uint32_t growth_rate)
+{
+    snake.growth += growth_rate;
 }
