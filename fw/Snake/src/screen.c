@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdint.h>
 #include <memory.h>
 #include "screen.h"
@@ -39,6 +40,11 @@ void scr_putnum(uint32_t col, uint32_t row, uint32_t num, char padding, uint32_t
         buffer[--last_free_place] = padding;
     }
     scr_puts(col, row, &buffer[last_free_place]);
+}
+
+bool scr_is_empty(uint32_t col, uint32_t row)
+{
+    return vmem[row][col] == scr_empty;
 }
 
 void scr_draw_border(void)

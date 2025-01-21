@@ -8,7 +8,7 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
 
 MEMORY
 {
-	app_memory : ORIGIN = 0x50, LENGTH = 0x3FFB0
+	app_memory : ORIGIN = 0x50, LENGTH = 0xFFB0
 	video_memory : ORIGIN = 0x100000, LENGTH = 0x1000
 }
 

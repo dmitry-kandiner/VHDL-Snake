@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <stdbool.h>
 
 #include "keyboard.h"
 
@@ -13,7 +12,7 @@ kbd_key kbd_get_last_key(void)
 
     if (prev_scancode == scancode) return key;
     prev_scancode = scancode;
-    
+
     switch (scancode)
     {
         case 0xE0: break;
