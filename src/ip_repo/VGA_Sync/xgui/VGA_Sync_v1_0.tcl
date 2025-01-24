@@ -19,13 +19,13 @@ proc init_gui { IPINST } {
   set Vertical [ipgui::add_group $IPINST -name "Vertical" -parent ${Page_0}]
   set v_active [ipgui::add_param $IPINST -name "v_active" -parent ${Vertical}]
   set_property tooltip {Vertical resolution, lines} ${v_active}
-  set v_back_porch [ipgui::add_param $IPINST -name "v_back_porch" -parent ${Vertical}]
-  set_property tooltip {Horizontal back porch, lines} ${v_back_porch}
   set v_sync_pulse [ipgui::add_param $IPINST -name "v_sync_pulse" -parent ${Vertical}]
   set_property tooltip {Vertical sync pulse width, lines} ${v_sync_pulse}
   ipgui::add_param $IPINST -name "v_sync_neg" -parent ${Vertical} -widget comboBox
   set v_front_porch [ipgui::add_param $IPINST -name "v_front_porch" -parent ${Vertical}]
   set_property tooltip {Vertical front porch, lines} ${v_front_porch}
+  set v_back_porch [ipgui::add_param $IPINST -name "v_back_porch" -parent ${Vertical}]
+  set_property tooltip {Horizontal back porch, lines} ${v_back_porch}
 
   ipgui::add_static_text $IPINST -name "Info" -parent ${Page_0} -text {The default settings correspond to VGA mode 640x480@73Hz, with pixel clock of 31.5MHz, vsync-, hsync-}
 
